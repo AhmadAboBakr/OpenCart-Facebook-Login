@@ -43,7 +43,7 @@ class ControllerFacebookFacebook extends Controller {
 			$email = $fbuser_profile['email'];
 			$password = $this->get_password($fbuser_profile['id']);
 
-			if($this->customer->login($email, $password)){
+			if($this->customer->login($email, $password,true)){
 				$this->redirect($this->url->link('account/account', '', 'SSL')); 
 			}
 
@@ -53,7 +53,7 @@ class ControllerFacebookFacebook extends Controller {
 				
 				$this->model_account_customer->editPassword($email, $password);
 				
-				if($this->customer->login($email, $password)){
+				if($this->customer->login($email, $password,true)){
 					$this->redirect($this->url->link('account/account', '', 'SSL')); 
 				}
 				
